@@ -145,7 +145,8 @@ class UserProfileVC: UIViewController, UserOutput, ImageUpdateService, UICollect
 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RepoCell.reuseId, for: indexPath) as! RepoCell
 
-            cell.set(repository: repo)
+            // we're hiding the image from this vc
+            cell.set(repository: repo, shouldHideImage: true)
 
             return cell
 

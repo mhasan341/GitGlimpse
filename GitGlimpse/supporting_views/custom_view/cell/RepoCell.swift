@@ -34,20 +34,25 @@ class RepoCell: UICollectionViewCell {
     }
     
     /// sets the essential value to the cell
-    func set(repository: GGRepo) {
+    func set(repository: GGRepo, shouldHideImage: Bool = false) {
         reponameLabel.text = repository.name
         repoDescLabel.text = repository.description ?? "No Description Available"
         
         forkCountLabel.text = "\(repository.forks)"
         starCountLabel.text = "\(repository.stargazersCount)"
-        
-        imageService.downloadImage(urlString: repository.owner.avatarUrl) { [weak self] image in
-            guard let self = self else{ return }
-            
-            DispatchQueue.main.async {
-                self.repoImageView.image = image
+
+        if !shouldHideImage {
+            imageService.downloadImage(urlString: repository.owner.avatarUrl) { [weak self] image in
+                guard let self = self else{ return }
+
+                DispatchQueue.main.async {
+                    self.repoImageView.image = image
+                }
             }
+        } else {
+            repoImageView.widthAnchor.constraint(equalToConstant: 0).isActive = true
         }
+
     }
     
     /// configuration
