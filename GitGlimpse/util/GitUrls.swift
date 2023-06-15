@@ -12,9 +12,6 @@ struct GitUrls {
     /// searches for repository in github
     static let searchRepoUrl = "https://api.github.com/search/repositories?q="
     /// gets the user details from github
-    static let getGitUser = "https://api.github.com/search/users?q="
-    /// gets the commit history
-    #warning("MUST CHANGE THIS")
-    static let getCommits = "https://api.github.com/repos/apple/swift/commits"
+    static let getGitUser = "https://api.github.com/users/"
 }
 
